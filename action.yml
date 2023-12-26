@@ -3,13 +3,13 @@ description: "Scans an FTP directory and stores all file names in a .json file."
 author: "Tobias Linz"
 inputs:
   server: 
-    required: true
+    required: false
     description: "ftp server"
   username:
-    required: true
+    required: false
     description: "ftp username"
   password:
-    required: true
+    required: false
     description: "ftp password"
   port:
     required: false
@@ -20,10 +20,10 @@ inputs:
     description: "Protocol to work with - ftp, ftps"
     default: "ftp"
   server-dir:
-    required: true
+    required: false
     description: "Path to scan on the server. Must end with trailing slash /"
   output-file-path:
-    required: true
+    required: false
     description: "Path to the output file. Must include the file name."
 runs: 
   using: "node20"
