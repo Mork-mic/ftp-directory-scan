@@ -7,7 +7,7 @@
     "url": "https://github.com/tobilinz/ftp-directory-scan.git"
   },
   "scripts": {
-    "build": "ncc build src/index.ts -Cm --license LICENSE"
+    "build": "ncc build src/index.ts -C"
   },
   "author": "Tobias Linz",
   "license": "MIT",
