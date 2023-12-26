@@ -13,4 +13,4 @@ jobs:
 
    - name: FTP Directory Scan
      id: ftp-scan
-     uses: tobilinz/ftp-directory-scan@v1.0.0
+     uses: tobilinz/ftp-directory-scan@v1.0.1
