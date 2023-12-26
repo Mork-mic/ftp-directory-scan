@@ -1,4 +1,4 @@
-name: "FTP Directory scan"
+name: "FTP directory scan"
 description: "Scans an FTP directory and stores all file names in a .json file."
 author: "Tobias Linz"
 inputs:
