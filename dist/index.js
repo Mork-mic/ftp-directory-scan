@@ -27099,13 +27099,17 @@ function run() {
             secure: (0, core_1.getBooleanInput)('secure')
         });
         const items = yield client.list((0, core_1.getInput)('server-dir'));
+        console.log('TEST');
         const pattern = (0, core_1.getInput)('exclude-regex');
         const regex = new RegExp(pattern);
-        const fileNames = items.filter(item => !((!(0, core_1.getBooleanInput)('include-subdirectories') && item.isDirectory) ||
+        console.log('TEST0');
+        const fileNames = items.filter(item => !((!(0, core_1.getBooleanInput)('include-directories') && item.isDirectory) ||
             (!(0, core_1.getBooleanInput)('include-files') && item.isFile) ||
             (!(0, core_1.getBooleanInput)('include-symlinks') && item.isSymbolicLink) ||
             (pattern !== null && regex.test(item.name)))).map(item => item.name);
+        console.log('TESTTEST');
         const readable = stream_1.Readable.from([JSON.stringify(fileNames)]);
+        console.log('TEST2');
         yield client.uploadFrom(readable, (0, core_1.getInput)('out-path'));
         client.close();
     });
