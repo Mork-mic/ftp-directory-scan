@@ -1,6 +1,6 @@
 {
   "name": "ftp-directory-scan",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Scans an FTP directory and stores all file names in a .json file.",
   "repository": {
     "type": "git",
