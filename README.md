@@ -40,7 +40,7 @@ jobs:
 | `verbose`             | No       | `true`                 | `false`       | If you encounter a problem, it may help to log out all communication |
 | `server-dir`.         | Yes      | `path/to`              |               | Path and Path to the directory to scan on the server |
 | `out-path`            | Yes      | `path/to/content.json` |               | Path of the file that will contain the directory information. File name must be included |
-| `exclude-regex`       | No       | `content.json`         | ``            | Regex that specifies what file names should be excluded |
+| `exclude-regex`       | No       | `content.json`         |               | Regex that specifies what file names should be excluded |
 | `include-files`       | No       | `false`                | `true`        | Wether to include file names in the output list |
 | `include-directories` | No       | `false`                | `true`        | Wether to include directory names in the output list |
 | `include-symlinks`    | No       | `false`                | `true`        | Wether to include symlink names in the output list |
