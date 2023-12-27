@@ -15,7 +15,7 @@ async function run() {
     const items = await client.list(getInput('server-dir'));
     const fileNames = items.map(item => item.name).filter(name => name !== 'content.json');
     await writeFile('content.json', JSON.stringify(fileNames));
-    console.log(await readFile('content.json'));
+    console.log(JSON.stringify(fileNames));
     //await client.uploadFrom('content.json', getInput('server-dir'));
     client.close();
 }
