@@ -27086,7 +27086,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __nccwpck_require__(2186);
 const basic_ftp_1 = __nccwpck_require__(7957);
-const promises_1 = __nccwpck_require__(3292);
+const stream_1 = __nccwpck_require__(2781);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         const client = new basic_ftp_1.Client(+(0, core_1.getInput)('timeout'));
@@ -27099,10 +27099,14 @@ function run() {
             secure: (0, core_1.getBooleanInput)('secure')
         });
         const items = yield client.list((0, core_1.getInput)('server-dir'));
-        const fileNames = items.map(item => item.name).filter(name => name !== 'content.json');
-        yield (0, promises_1.writeFile)('content.json', JSON.stringify(fileNames));
-        console.log(JSON.stringify(fileNames));
-        //await client.uploadFrom('content.json', getInput('server-dir'));
+        const pattern = (0, core_1.getInput)('exclude-regex');
+        const regex = new RegExp(pattern);
+        const fileNames = items.filter(item => !((!(0, core_1.getBooleanInput)('include-subdirectories') && item.isDirectory) ||
+            (!(0, core_1.getBooleanInput)('include-files') && item.isFile) ||
+            (!(0, core_1.getBooleanInput)('include-symlinks') && item.isSymbolicLink) ||
+            (pattern !== null && regex.test(item.name)))).map(item => item.name);
+        const readable = stream_1.Readable.from([JSON.stringify(fileNames)]);
+        yield client.uploadFrom(readable, (0, core_1.getInput)('out-path'));
         client.close();
     });
 }
@@ -27172,14 +27176,6 @@ module.exports = require("events");
 
 "use strict";
 module.exports = require("fs");
-
-/***/ }),
-
-/***/ 3292:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("fs/promises");
 
 /***/ }),
 
