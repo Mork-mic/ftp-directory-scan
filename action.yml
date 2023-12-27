@@ -29,7 +29,7 @@ inputs:
     default: false
   server-dir:
     required: true
-    description: "Path to scan on the server"
+    description: "Path to the directory to scan on the server"
   out-path:
     required: true
     description: "Path of the file that will contain the directory information. File name must be included"
