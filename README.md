@@ -38,7 +38,7 @@ jobs:
 | `secure`              | No       | `false`                | `true`        | `false`: Uses plain ftp. Provides no encryption. `true`: Uses ftps. Provides full encryption. |
 | `timeout`             | No       | `70000`                | `30000`       | Timeout in milliseconds that will be used for any connection made. `0` means `no timeout` |
 | `verbose`             | No       | `true`                 | `false`       | If you encounter a problem, it may help to log out all communication |
-| `server-dir`.         | Yes      | `path/to`              |               | Path and Path to the directory to scan on the server |
+| `server-dir`.         | Yes      | `path/to`              |               | Path to the directory to scan on the server |
 | `out-path`            | Yes      | `path/to/content.json` |               | Path of the file that will contain the directory information. File name must be included |
 | `exclude-regex`       | No       | `content.json`         |               | Regex that specifies what file names should be excluded |
 | `include-files`       | No       | `false`                | `true`        | Wether to include file names in the output list |
