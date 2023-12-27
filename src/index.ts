@@ -23,6 +23,7 @@ async function run() {
         (!getBooleanInput('include-symlinks') && item.isSymbolicLink) ||
         (pattern !== null && regex.test(item.name))   
     )).map(item => item.name);
+    if (getBooleanInput('sort')) fileNames.sort();
     
     const readable = Readable.from([ JSON.stringify(fileNames, null, 2) ]);
     await client.uploadFrom(readable, getInput('out-path'));

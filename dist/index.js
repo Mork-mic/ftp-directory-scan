@@ -27105,6 +27105,8 @@ function run() {
             (!(0, core_1.getBooleanInput)('include-files') && item.isFile) ||
             (!(0, core_1.getBooleanInput)('include-symlinks') && item.isSymbolicLink) ||
             (pattern !== null && regex.test(item.name)))).map(item => item.name);
+        if ((0, core_1.getBooleanInput)('sort'))
+            fileNames.sort();
         const readable = stream_1.Readable.from([JSON.stringify(fileNames, null, 2)]);
         yield client.uploadFrom(readable, (0, core_1.getInput)('out-path'));
         client.close();

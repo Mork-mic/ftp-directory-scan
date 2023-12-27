@@ -49,6 +49,10 @@ inputs:
     required: false
     description: "Wether to include symlink names in the output list"
     default: true
+  sort:
+    required: false
+    description: "Wether to sort the names or not"
+    defaults: false
 runs: 
   using: "node20"
   main: "dist/index.js"
