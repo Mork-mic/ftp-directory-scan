@@ -18,6 +18,6 @@ jobs:
       server: ${{ secrets.SERVER }}
       user: ${{ secrets.USER }}
       password: ${{ secrets.PASSWORD }}
-      server-dir: public_html/test
+      server-dir: public_html/test/
       verbose: true
       
