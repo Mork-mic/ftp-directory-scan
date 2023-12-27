@@ -6,10 +6,10 @@ inputs:
     required: true
     description: "ftp server"
   user:
-    required: false
+    required: true
     description: "ftp username"
   password:
-    required: false
+    required: true
     description: "ftp password"
   port:
     required: false
@@ -19,12 +19,6 @@ inputs:
     required: false
     description: "True: ftps - False: ftp"
     default: true
-  server-dir:
-    required: false
-    description: "Path to scan on the server. Must end with trailing slash /"
-  output-file-path:
-    required: false
-    description: "Path to the output file. Must include the file name."
   timeout:
     required: false
     description: "Timeout in milliseconds that will be used for any connection made"
@@ -33,6 +27,9 @@ inputs:
     required: false
     description: "If you encounter a problem, it may help to log out all communication"
     default: false
+  server-dir:
+    required: true
+    description: "Path to scan on the server. Must end with trailing slash /"
 runs: 
   using: "node20"
   main: "dist/index.js"

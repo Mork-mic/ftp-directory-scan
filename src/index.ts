@@ -6,7 +6,7 @@ async function run() {
     const client = new Client(+getInput('timeout'));
     client.ftp.verbose = getBooleanInput('verbose');
     
-    client.access({
+    await client.access({
         host: getInput('host'),
         user: getInput('user'),
         password: getInput('password'),
