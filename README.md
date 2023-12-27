@@ -31,7 +31,7 @@ jobs:
 ## Settings
 | Key Name              | Required | Example                | Default Value | Description               |
 |-----------------------|----------|------------------------|---------------|---------------------------|
-| `server`              | Yes      | `ftp.tobl.in`.         |               | ftp server                |
+| `server`              | Yes      | `ftp.tobl.in`          |               | ftp server                |
 | `user`                | Yes      | `tobias`               |               | ftp user name             |
 | `password`            | Yes      | `123456`               |               | ftp password              |
 | `port`                | No       | `32`                   | `21`          | Server port to connect to |
