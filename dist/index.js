@@ -27092,7 +27092,7 @@ function run() {
         const client = new basic_ftp_1.Client(+(0, core_1.getInput)('timeout'));
         client.ftp.verbose = (0, core_1.getBooleanInput)('verbose');
         yield client.access({
-            host: (0, core_1.getInput)('host'),
+            host: (0, core_1.getInput)('server'),
             user: (0, core_1.getInput)('user'),
             password: (0, core_1.getInput)('password'),
             port: +(0, core_1.getInput)('port'),
