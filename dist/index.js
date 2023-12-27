@@ -27091,7 +27091,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         const client = new basic_ftp_1.Client(+(0, core_1.getInput)('timeout'));
         client.ftp.verbose = (0, core_1.getBooleanInput)('verbose');
-        client.access({
+        yield client.access({
             host: (0, core_1.getInput)('host'),
             user: (0, core_1.getInput)('user'),
             password: (0, core_1.getInput)('password'),
