@@ -27101,7 +27101,7 @@ function run() {
         const items = yield client.list((0, core_1.getInput)('server-dir'));
         const fileNames = items.map(item => item.name).filter(name => name !== 'content.json');
         yield (0, promises_1.writeFile)('content.json', JSON.stringify(fileNames));
-        console.log(yield (0, promises_1.readFile)('content.json'));
+        console.log(JSON.stringify(fileNames));
         //await client.uploadFrom('content.json', getInput('server-dir'));
         client.close();
     });
