@@ -3,7 +3,7 @@ description: "Scans an FTP directory and stores all file names in a .json file."
 author: "Tobias Linz"
 inputs:
   server: 
-    required: false
+    required: true
     description: "ftp server"
   username:
     required: false

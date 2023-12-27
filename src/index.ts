@@ -1,8 +1,8 @@
-import * as core from '@actions/core';
+import { setFailed, getInput } from '@actions/core';
+import { test } from './main';
 
 try {
-    const input = core.getInput('port');
-    console.log('PORT: ' + input);
+    test(+getInput('port'), getInput('host'))
 } catch (error) {
-    core.setFailed((error as any).message);
+    setFailed((error as any).message);
 }

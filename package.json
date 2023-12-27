@@ -1,13 +1,15 @@
 {
   "name": "ftp-directory-scan",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Scans an FTP directory and stores all file names in a .json file.",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tobilinz/ftp-directory-scan.git"
   },
   "scripts": {
-    "build": "ncc build src/index.ts -C"
+    "build": "ncc build src/index.ts -C",
+    "test": "ncc build src/index.ts -C && node ."
   },
   "author": "Tobias Linz",
   "license": "MIT",
