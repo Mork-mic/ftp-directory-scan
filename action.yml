@@ -29,7 +29,26 @@ inputs:
     default: false
   server-dir:
     required: true
-    description: "Path to scan on the server. Must end with trailing slash /"
+    description: "Path to scan on the server"
+  out-path:
+    required: true
+    description: "Path of the file that will contain the directory information. File name must be included"
+  exclude-regex:
+    required: false 
+    description: "Regex that specifies what file names should be excluded"
+    default: ""
+  include-files:
+    required: false
+    description: "Wether to include file names in the output list"
+    default: true
+  include-directories:
+    required: false
+    description: "Wether to include directory names in the output list"
+    default: true
+  include-symlinks:
+    required: false
+    description: "Wether to include symlink names in the output list"
+    default: true
 runs: 
   using: "node20"
   main: "dist/index.js"

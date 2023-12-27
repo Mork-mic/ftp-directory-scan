@@ -1,10 +1,11 @@
 import { setFailed, getInput, getBooleanInput } from '@actions/core';
 import { Client } from 'basic-ftp';
-import { readFile, writeFile } from 'fs/promises';
+import { Readable } from 'stream';
 
 async function run() {
     const client = new Client(+getInput('timeout'));
     client.ftp.verbose = getBooleanInput('verbose');
+
     await client.access({
         host: getInput('server'),
         user: getInput('user'),
@@ -13,10 +14,19 @@ async function run() {
         secure: getBooleanInput('secure')
     });
     const items = await client.list(getInput('server-dir'));
-    const fileNames = items.map(item => item.name).filter(name => name !== 'content.json');
-    await writeFile('content.json', JSON.stringify(fileNames));
-    console.log(JSON.stringify(fileNames));
-    //await client.uploadFrom('content.json', getInput('server-dir'));
+
+    const pattern = getInput('exclude-regex');
+    const regex = new RegExp(pattern);
+    const fileNames = items.filter(item => !(
+        (!getBooleanInput('include-subdirectories') && item.isDirectory) ||
+        (!getBooleanInput('include-files') && item.isFile) ||
+        (!getBooleanInput('include-symlinks') && item.isSymbolicLink) ||
+        (pattern !== null && regex.test(item.name))   
+    )).map(item => item.name);
+    
+    const readable = Readable.from([ JSON.stringify(fileNames) ]);
+    await client.uploadFrom(readable, getInput('out-path'));
+
     client.close();
 }
 
