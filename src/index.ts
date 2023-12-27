@@ -15,10 +15,8 @@ async function run() {
     });
     const items = await client.list(getInput('server-dir'));
 
-    console.log('TEST')
     const pattern = getInput('exclude-regex');
     const regex = new RegExp(pattern);
-    console.log('TEST0')
     const fileNames = items.filter(item => !(
         (!getBooleanInput('include-directories') && item.isDirectory) ||
         (!getBooleanInput('include-files') && item.isFile) ||
@@ -26,9 +24,7 @@ async function run() {
         (pattern !== null && regex.test(item.name))   
     )).map(item => item.name);
     
-    console.log('TESTTEST')
-    const readable = Readable.from([ JSON.stringify(fileNames) ]);
-    console.log('TEST2')
+    const readable = Readable.from([ JSON.stringify(fileNames, null, 2) ]);
     await client.uploadFrom(readable, getInput('out-path'));
 
     client.close();
