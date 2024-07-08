@@ -1,3 +1,22 @@
-              - name: FTP directory scan
-                uses: tobilinz/ftp-directory-scan@v1.2.0
-            
+name: Generate content file
+
+on:
+ workflow_dispatch:
+
+jobs:
+ ftp-scan:
+   runs-on: ubuntu-latest
+
+   steps:
+   - name: Checkout code
+     uses: actions/checkout@v4.1.1
+
+   - name: FTP Directory Scan
+     id: ftp-scan
+     uses: tobilinz/ftp-directory-scan@v1.2.0
+     with:
+      server: ftp.tobl.in
+      user: tobias
+      password: ${{ secrets.FTP_PASSWORD }}
+      server-dir: somedir/mydir
+      out-path: somedir/mydir/content.json
